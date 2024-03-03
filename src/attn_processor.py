@@ -142,6 +142,8 @@ def aggregate_attention(
         for item in attention_maps[f"{location}_{'cross' if is_cross else 'self'}"]:
             if item.shape[2] == res:
                 out.append(item)
+
+            print("item.shape[2]:", item.shape[2])
     out = torch.cat(out, dim=1).mean(dim=1)
     return out.cpu()
 

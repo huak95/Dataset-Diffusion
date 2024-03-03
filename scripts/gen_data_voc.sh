@@ -1,12 +1,15 @@
-sd_path=""
-batch_size=4
+sd_path="stabilityai/stable-diffusion-2"
+batch_size=2
 
 CUDA_VISIBLE_DEVICES=0 python -m gen_data \
     --work-dir data/gen_voc \
     --json-path data/prompts/voc_prompts.json \
+    --data-type voc \
     --sd-path $sd_path \
-    --batch-size $batch_size
-
+    --batch-size $batch_size \
+    --self-res 24 \
+    --cross-res 12 \
+    --start 0 --end 10
 
 # If you have 2 gpus, you can generate the dataset in parallel with
 # ```
